@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PersonalTeaching.App">
+    <Application.Resources>
+        <x:Double x:Key="RowHeight">70</x:Double>
+        <Color x:Key="AppRed">#EE5F44</Color>
+        <Style TargetType="NavigationPage">
+            <Setter Property="NavigationPage.BarBackgroundColor" Value="#FFFFFF"/>
+        </Style>
+        <Style TargetType="Button" x:Key="PageEndButton">
+            <Setter Property="VerticalOptions" Value="End"/>
+            <Setter Property="BackgroundColor" Value="{StaticResource AppRed}"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="FontSize" Value="Default"/>
+        </Style>
+        <Style TargetType="ContentPage">
+            <Setter Property="BackgroundColor" Value="White"/>
+        </Style>
+        <Style TargetType="Label" x:Key="ListLabelStyleInXaml">
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+        
+        
+        
+    </Application.Resources>
+</Application>

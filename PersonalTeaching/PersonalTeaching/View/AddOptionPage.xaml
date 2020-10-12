@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PersonalTeaching.View.AddOptionPage">
+    <NavigationPage.TitleView>
+        <StackLayout>
+            <Label Text="추가 사항        " HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Title"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BackgroundColor="Black" HeightRequest="1"></StackLayout>
+            <StackLayout VerticalOptions="FillAndExpand"
+                         BackgroundColor="White"
+                         Padding="10">
+                <Grid RowSpacing="1"
+                      x:Name="AddOptionGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    
+                </Grid>
+                <StackLayout VerticalOptions="StartAndExpand" 
+                             BackgroundColor="Black" 
+                             Margin="0,0,0,10"
+                             HeightRequest="1"></StackLayout>
+                <Label VerticalOptions="End"
+                       HorizontalOptions="CenterAndExpand"
+                       x:Name="priceLabel"
+                       TextColor="Black"
+                       Margin="0,0,0,5"/>
+                <Button Style="{StaticResource PageEndButton}"
+                        Text="견적서 제출하기"
+                        x:Name="CompleteButton"
+                        Clicked="OnCompleteButtonClicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
