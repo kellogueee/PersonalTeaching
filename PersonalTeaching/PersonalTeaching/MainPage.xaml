@@ -3,44 +3,144 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PersonalTeaching.MainPage">
     <NavigationPage.TitleView>
-        <StackLayout>
-            <Label Text="과외 견적서" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Title"/>
-        </StackLayout>
+        <Label Text="학년 선택"
+               FontSize="Title"
+               HorizontalOptions="StartAndExpand"
+               HorizontalTextAlignment="Center"/>
     </NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <Style TargetType="Frame">
+            <Setter Property="BorderColor" Value="Transparent"/>
+            <Setter Property="HasShadow" Value="False"/>
+        </Style>
+    </ContentPage.Resources>
+    
     
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout BackgroundColor="Black" HeightRequest="1"/>
-            <StackLayout Spacing="1" 
-                         BackgroundColor="White"
-                         VerticalOptions="FillAndExpand"
-                         Padding="10">
-                <Grid RowSpacing="1"
-                      x:Name="MainGrid">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="70"/>
-                        <RowDefinition Height="70"/>
-                        <RowDefinition Height="70"/>
-                        <RowDefinition Height="70"/>
-                        <RowDefinition Height="70"/>
-                        <RowDefinition Height="70"/>
-                    </Grid.RowDefinitions>
+        <StackLayout Style="{StaticResource PageSeparationBar}">
+            <StackLayout Margin="0,1,0,0" Style="{StaticResource MainContentsPage}" VerticalOptions="FillAndExpand" Padding="10">
+                
+                
+                <ScrollView Padding="0,20" VerticalScrollBarVisibility="Never">
                     
-                </Grid>
-                <StackLayout VerticalOptions="StartAndExpand" 
-                             BackgroundColor="Black" 
-                             Margin="0,0,0,10"
-                             HeightRequest="1"></StackLayout>
-                <Label VerticalOptions="End"
-                       HorizontalOptions="CenterAndExpand"
-                       x:Name="priceLabel"
-                       TextColor="Black"
-                       Margin="0,0,0,5"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="{StaticResource RowHeight}"/>
+                            <RowDefinition Height="{StaticResource RowHeight}"/>
+                            <RowDefinition Height="{StaticResource RowHeight}"/>
+                            <RowDefinition Height="{StaticResource RowHeight}"/>
+                            <RowDefinition Height="{StaticResource RowHeight}"/>
+                            <RowDefinition Height="{StaticResource RowHeight}"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        
+                        <StackLayout Orientation="Horizontal" Grid.Row="0">
+                            <RadioButton GroupName="GradeRadio" CheckedChanged="OnRadioCheckChanged" x:Name="rad1"/>
+                            <Label Text="{Binding Middle1}"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="StartAndExpand"/>
+                            <Label Text="{Binding Middle1Price}"
+                                   IsVisible="false"/>
+                            <Label Text="{Binding Middle1PriceString}"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="EndAndExpand"
+                                   IsVisible="{Binding Source={x:Reference rad1}, Path=IsChecked}"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnStackTapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal" Grid.Row="1">
+                            <RadioButton GroupName="GradeRadio" CheckedChanged="OnRadioCheckChanged" x:Name="rad2"/>
+                            <Label Text="{Binding Middle2}"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="StartAndExpand"/>
+                            <Label Text="{Binding Middle2Price}"
+                                   IsVisible="false"/>
+                            <Label Text="{Binding Middle2PriceString}"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="EndAndExpand"
+                                   IsVisible="{Binding Source={x:Reference rad2}, Path=IsChecked}"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnStackTapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal" Grid.Row="2">
+                            <RadioButton GroupName="GradeRadio" CheckedChanged="OnRadioCheckChanged" x:Name="rad3"/>
+                            <Label Text="{Binding Middle3}"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="StartAndExpand"/>
+                            <Label Text="{Binding Middle3Price}"
+                                   IsVisible="false"/>
+                            <Label Text="{Binding Middle3PriceString}"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="EndAndExpand"
+                                   IsVisible="{Binding Source={x:Reference rad3}, Path=IsChecked}"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnStackTapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal" Grid.Row="3">
+                            <RadioButton GroupName="GradeRadio" CheckedChanged="OnRadioCheckChanged" x:Name="rad4"/>
+                            <Label Text="{Binding High1}"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="StartAndExpand"/>
+                            <Label Text="{Binding High1Price}"
+                                   IsVisible="false"/>
+                            <Label Text="{Binding High1PriceString}"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="EndAndExpand"
+                                   IsVisible="{Binding Source={x:Reference rad4}, Path=IsChecked}"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnStackTapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal" Grid.Row="4">
+                            <RadioButton GroupName="GradeRadio" CheckedChanged="OnRadioCheckChanged" x:Name="rad5"/>
+                            <Label Text="{Binding High2}"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="StartAndExpand"/>
+                            <Label Text="{Binding High2Price}"
+                                   IsVisible="false"/>
+                            <Label Text="{Binding High2PriceString}"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="EndAndExpand"
+                                   IsVisible="{Binding Source={x:Reference rad5}, Path=IsChecked}"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnStackTapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal" Grid.Row="5">
+                            <RadioButton GroupName="GradeRadio" CheckedChanged="OnRadioCheckChanged" x:Name="rad6"/>
+                            <Label Text="{Binding High3}"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="StartAndExpand"/>
+                            <Label Text="{Binding High3Price}"
+                                   IsVisible="false"/>
+                            <Label Text="{Binding High3PriceString}"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="EndAndExpand"
+                                   IsVisible="{Binding Source={x:Reference rad6}, Path=IsChecked}"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnStackTapped"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </Grid>
+                    
+                </ScrollView>
+                <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
+                    <Label Text="견적 금액: "/>
+                    <Label x:Name="currentPriceLabel" Text="0원"/>
+                </StackLayout>
                 <Button Style="{StaticResource PageEndButton}"
-                        Text="견적서 작성하기"
-                        x:Name="SelectButton"
-                        Clicked="OnSelectButtonClicked"/>
+                        Text="계속하기"
+                        Clicked="OnNextButtonClicked"/>
             </StackLayout>
         </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>

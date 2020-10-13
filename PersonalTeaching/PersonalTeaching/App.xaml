@@ -1,33 +1,77 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:PersonalTeaching"
              x:Class="PersonalTeaching.App">
     <Application.Resources>
-        <x:Double x:Key="RowHeight">70</x:Double>
-        <Color x:Key="AppRed">#EE5F44</Color>
-        <Style TargetType="NavigationPage">
-            <Setter Property="NavigationPage.BarBackgroundColor" Value="#FFFFFF"/>
+        
+        
+        <!--Light Mode Colors-->
+        <Color x:Key="LightPageBackgroundColor">white</Color>
+        <Color x:Key="LightNavigationBarColor">WhiteSmoke</Color>
+        <Color x:Key="LightPrimaryTextColor">Black</Color>
+        <Color x:Key="LightBorderColor">Gray</Color>
+        <Color x:Key="LightRadioBorderColor">black</Color>
+        
+        <!--Dark Mode Colors-->
+        <Color x:Key="DarkPageBackgroundColor">Black</Color>
+        <Color x:Key="DarkNavigationBarColor">#242424</Color>
+        <Color x:Key="DarkPrimaryTextColor">White</Color>
+        <Color x:Key="DarkBorderColor">WhiteSmoke</Color>
+        <Color x:Key="DarkRadioBorderColor">WhiteSmoke</Color>
+
+        <Style TargetType="RadioButton">
+            <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource LightRadioBorderColor},Dark={StaticResource DarkRadioBorderColor}}"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
         </Style>
+        
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"/>
+        </Style>
+        
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="{AppThemeBinding Light={StaticResource LightNavigationBarColor}, Dark={StaticResource DarkNavigationBarColor}}"/>
+            <Setter Property="BarTextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"/>
+        </Style>
+
+        <Style TargetType="custom:BorderlessPicker">
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"/>
+            <Setter Property="TitleColor" Value="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}"/>
+            <Setter Property="FontSize" Value="Small"/>
+        </Style>
+
+        <Style TargetType="StackLayout" x:Key="PageSeparationBar">
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightBorderColor}, Dark={StaticResource DarkBorderColor}}"/>
+        </Style>
+        
+        <Style TargetType="StackLayout" x:Key="MainContentsPage">
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"/>
+        </Style>
+
+        <Style TargetType="Frame">
+            <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource LightBorderColor}, Dark={StaticResource DarkBorderColor}}"/>
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}"/>
+        </Style>
+
+
+        <x:Double x:Key="RowHeight">60</x:Double>
+        <Color x:Key="AppRedLight">#EE5F44</Color>
+        <Color x:Key="AppRedNight">#a70808</Color>
+       
         <Style TargetType="Button" x:Key="PageEndButton">
-            <Setter Property="VerticalOptions" Value="End"/>
-            <Setter Property="BackgroundColor" Value="{StaticResource AppRed}"/>
+            <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource AppRedLight},Dark={StaticResource AppRedNight}}"/>
             <Setter Property="TextColor" Value="White"/>
             <Setter Property="CornerRadius" Value="5"/>
             <Setter Property="FontSize" Value="Default"/>
         </Style>
-        <Style TargetType="ContentPage">
-            <Setter Property="BackgroundColor" Value="White"/>
-        </Style>
+       
         <Style TargetType="Label" x:Key="ListLabelStyleInXaml">
             <Setter Property="FontSize" Value="17"/>
             <Setter Property="TextColor" Value="White"/>
             <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
             <Setter Property="HorizontalOptions" Value="Start"/>
         </Style>
-        <Style TargetType="Label">
-            <Setter Property="TextColor" Value="Black"/>
-        </Style>
-        
         
         
     </Application.Resources>

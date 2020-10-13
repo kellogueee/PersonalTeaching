@@ -63,6 +63,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BorderlessPickerRenderer.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
@@ -134,9 +135,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\downArrow64.png" />
+    <BundleResource Include="Resources\downArrow64Dark.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\upArrow64.png" />
+    <BundleResource Include="Resources\downArrow64Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\upArrow64Dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\upArrow64Light.png" />
   </ItemGroup>
 </Project>

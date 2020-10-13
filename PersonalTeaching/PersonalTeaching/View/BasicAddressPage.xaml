@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:custom="clr-namespace:PersonalTeaching"
+             x:Class="PersonalTeaching.View.BasicAddressPage">
+    <NavigationPage.TitleView>
+        <Label Text="(디자인 할 부분)"
+               FontSize="Title"
+               HorizontalOptions="CenterAndExpand"
+               HorizontalTextAlignment="Center"/>
+    </NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <Style TargetType="Picker">
+            <Setter Property="FontSize" Value="Small"/>
+        </Style>
+        <Style TargetType="Frame">
+            <Setter Property="Margin" Value="0,10"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <!--기본세팅-->
+        <StackLayout Style="{StaticResource PageSeparationBar}">
+            <StackLayout Margin="0,1,0,0" Style="{StaticResource MainContentsPage}" VerticalOptions="FillAndExpand" Padding="10">
+
+                <!--본문 내용-->
+                <ScrollView Padding="0,20" VerticalScrollBarVisibility="Never">
+                    <StackLayout>
+                        <Label Text="지역" FontSize="Subtitle"/>
+                        <Frame>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <custom:BorderlessPicker Title="-시 선택-" x:Name="Si_Picker" ItemsSource="{Binding Sis}" SelectedItem="{Binding Selected_Si}">
+                                    
+                                </custom:BorderlessPicker>
+                                <forms:CachedImage 
+                                        Grid.Column="1"
+                                        Source="{AppThemeBinding Light=downArrow64Light.png,Dark=downArrow64Dark.png}"
+                                        BackgroundColor="Transparent"
+                                        Aspect="AspectFit"
+                                        Opacity="0.5">
+                                </forms:CachedImage>
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="On_Si_FrameBoxTapped"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+                        <Frame >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <custom:BorderlessPicker Title="-구 선택-" x:Name="Gu_Picker" ItemsSource="{Binding Gus}" SelectedIndexChanged="OnGuChanged">
+                                    
+                                </custom:BorderlessPicker>
+                                <forms:CachedImage 
+                                        Grid.Column="1"
+                                        Source="{AppThemeBinding Light=downArrow64Light.png,Dark=downArrow64Dark.png}"
+                                        BackgroundColor="Transparent"
+                                        Aspect="AspectFit"
+                                        Opacity="0.5">
+                                </forms:CachedImage>
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="On_Gu_FrameBoxTapped"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+                        <Frame>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <custom:BorderlessPicker Title="-동 선택-" x:Name="Dong_Picker">
+                                    
+                                </custom:BorderlessPicker>
+                                <forms:CachedImage 
+                                        Grid.Column="1"
+                                        Source="{AppThemeBinding Light=downArrow64Light.png,Dark=downArrow64Dark.png}"
+                                        BackgroundColor="Transparent"
+                                        Aspect="AspectFit"
+                                        Opacity="0.5">
+                                </forms:CachedImage>
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="On_Dong_FrameBoxTapped"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                        
+                    </StackLayout>
+                    
+                </ScrollView>
+                <!--프레임스택 종료-->
+
+                <Button Style="{StaticResource PageEndButton}"
+                        Text="계속하기"
+                        Clicked="OnNextButtonClicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

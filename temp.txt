@@ -1,0 +1,43 @@
+<!--<StackLayout Padding="10">
+            -->
+        <!--기본사항-->
+        <!--
+            <Label Text="중2"/>
+            <Label Text="기장중학교"/>
+            <Label Text="내신평균"/>
+            <Label Text="모의고사 평균"/>
+            <Label Text="교육 경험"/>
+            <Label Text="진도 상황"/>
+            <Label Text="내신형, 수능형"/>
+            -->
+        <!--주소는 웹뷰를 사용해야할거같은데-->
+        <!--
+            <Label Text="집 주소"/>
+
+            
+
+            -->
+        <!--과외 바라는점-->
+        <!--
+            <Label Text="교육 희망 시간"/>
+            <Label Text="수업스타일"/>
+            
+            
+            <custom:BorderlessEditor AutoSize="TextChanges"
+                    HeightRequest="100"/>-->
+
+<!--<Switch x:Name="sw1"/>
+                                <Label Text="있음">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding Source={x:Reference sw1},Path=IsToggled}" Value="true">
+                                            <Setter Property="Text" Value="없음"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>-->
+
+
+IsVisible="{Binding Source={x:Reference Mon}, Path=IsChecked}"
+
+                //GradientDrawable gd = new GradientDrawable();
+                //gd.SetColor(global::Android.Graphics.Color.Transparent);
+                //Control.SetBackground(gd);

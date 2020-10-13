@@ -1,34 +1,387 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:PersonalTeaching"
              x:Class="PersonalTeaching.View.WriteStudentInformationPage">
     <NavigationPage.TitleView>
-        <StackLayout>
-            <Label Text="학생정보 제출" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Title"/>
-        </StackLayout>
+        <Label Text="견적서"
+               FontSize="Title"
+               HorizontalOptions="CenterAndExpand"
+               HorizontalTextAlignment="Center"/>
     </NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+        </Style>
+        <Style TargetType="Frame">
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+        <Style TargetType="StackLayout" x:Key="Inner">
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+        <Style TargetType="StackLayout" x:Key="InnerInner">
+            <Setter Property="Margin" Value="0,5"/>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Padding="10">
-            <!--기본사항-->
-            <Label Text="중2"/>
-            <Label Text="기장중학교"/>
-            <Label Text="내신평균"/>
-            <Label Text="모의고사 평균"/>
-            <Label Text="교육 경험"/>
-            <Label Text="진도 상황"/>
-            <Label Text="내신형, 수능형"/>
-            <!--주소는 웹뷰를 사용해야할거같은데-->
-            <Label Text="집 주소"/>
+        <StackLayout Style="{StaticResource PageSeparationBar}">
+            <StackLayout Margin="0,1,0,0" Style="{StaticResource MainContentsPage}" VerticalOptions="FillAndExpand" Padding="10">
 
-            
+                <ScrollView Padding="0,20" VerticalScrollBarVisibility="Never">
+                    <StackLayout>
+                        <Label VerticalOptions="CenterAndExpand" Text="학생 정보" FontSize="Subtitle"/>
 
-            <!--과외 바라는점-->
-            <Label Text="교육 희망 시간"/>
-            <Label Text="수업스타일"/>
-            
-            
-            <Editor AutoSize="TextChanges"
-                    HeightRequest="100"/>
+                        <StackLayout Orientation="Horizontal" Style="{StaticResource Inner}">
+                            <Label Text="º 지역:"/>
+                            <Label Text="부산광역시 해운대구 기장군"/>
+                        </StackLayout>
+                        
+                        <StackLayout Orientation="Horizontal" Style="{StaticResource Inner}">
+                            <Label Text="º 학교 :"/>
+                            <Frame Padding="7">
+                                <Label Text="기장중학교"/>
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal" Style="{StaticResource Inner}">
+                            <Label Text="º 학년 :"/>
+                            <Label Text="중학교 2학년"/>
+                        </StackLayout>
+
+                        <StackLayout Style="{StaticResource Inner}">
+                            <Label Text="º 교육 경험 "/>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Horizontal">
+                                    <RadioButton GroupName="EducationExperiment"/>
+                                    <Label Text="있음"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <RadioButton GroupName="EducationExperiment"/>
+                                    <Label Text="없음"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+
+
+                        <StackLayout Style="{StaticResource Inner}">
+                            <Label Text="º 진도 상황"/>
+                            <Frame HeightRequest="100">
+                                <custom:BorderlessEditor Placeholder="진도 상황을 작성해 주세요." FontSize="Small">
+
+                                </custom:BorderlessEditor>
+                            </Frame>
+                        </StackLayout>
+
+
+                        <StackLayout HeightRequest="1" Style="{StaticResource PageSeparationBar}" Margin="0,20"></StackLayout>
+
+                        <Label Text="과외 시 희망 사항"
+                               FontSize="Subtitle"/>
+
+                        <StackLayout Style="{StaticResource Inner}">
+                            <Label Text="º 대입 준비 방법"/>
+                            <StackLayout Orientation="Horizontal" Style="{StaticResource InnerInner}">
+                                <StackLayout Orientation="Horizontal">
+                                    <RadioButton GroupName="PrepareMethod"/>
+                                    <Label Text="내신"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <RadioButton GroupName="PrepareMethod"/>
+                                    <Label Text="수능"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <StackLayout Style="{StaticResource Inner}">
+                            <Label Text="º 수업 스타일"/>
+                            <Frame HeightRequest="100">
+                                <custom:BorderlessEditor Placeholder="희망하는 수업 방식을 적어주세요." FontSize="Small">
+
+                                </custom:BorderlessEditor>
+                            </Frame>
+                        </StackLayout>
+
+
+                        <StackLayout Style="{StaticResource Inner}">
+                            <Label Text="º 희망 수업 시간 (선생님에 따라 조율 될 수 있음)"/>
+                            <StackLayout Orientation="Horizontal" Margin="5">
+                                <Label Text="요일"/>
+                                <Label Text="시작 시간" HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                                <StackLayout Style="{StaticResource InnerInner}" Spacing="20">
+                                    
+                                    <!--월-->
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                            <CheckBox x:Name="Mon"/>
+                                            <Label Text="월"/>
+                                        </StackLayout>
+                                        <StackLayout IsVisible="{Binding Source={x:Reference Mon}, Path=IsChecked}" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                            <Frame>
+                                                <custom:BorderlessPicker Title="시" HorizontalTextAlignment="Center"
+                                                                          WidthRequest="60"
+                                                                         ItemsSource="{Binding Hours}">
+                                                    <custom:BorderlessPicker.Triggers>
+                                                        <DataTrigger TargetType="custom:BorderlessPicker" Binding="{Binding Source={x:Reference Mon}, Path=IsChecked}" Value="false">
+                                                            <Setter Property="SelectedItem" Value="null"/>
+                                                        </DataTrigger>
+                                                    </custom:BorderlessPicker.Triggers>
+                                                </custom:BorderlessPicker>
+                                            </Frame>
+                                            
+                                            <Label Text=":"/>
+                                            <Frame>
+                                                <custom:BorderlessPicker Title="분" HorizontalTextAlignment="Center"
+                                                                         WidthRequest="60"
+                                                                         ItemsSource="{Binding Minutes}">
+                                                    <custom:BorderlessPicker.Triggers>
+                                                        <DataTrigger TargetType="custom:BorderlessPicker" Binding="{Binding Source={x:Reference Mon}, Path=IsChecked}" Value="false">
+                                                            <Setter Property="SelectedItem" Value="null"/>
+                                                        </DataTrigger>
+                                                    </custom:BorderlessPicker.Triggers>
+                                                </custom:BorderlessPicker>
+                                            </Frame>
+                                            
+                                        </StackLayout>
+                                    </StackLayout>
+
+
+
+                                    <!--화-->
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                            <CheckBox x:Name="Tue"/>
+                                            <Label Text="화"/>
+                                        </StackLayout>
+                                        <StackLayout IsVisible="{Binding Source={x:Reference Tue}, Path=IsChecked}" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                            <Frame>
+                                                <custom:BorderlessPicker Title="시" HorizontalTextAlignment="Center"
+                                                                          WidthRequest="60"
+                                                                         ItemsSource="{Binding Hours}">
+                                                    <custom:BorderlessPicker.Triggers>
+                                                        <DataTrigger TargetType="custom:BorderlessPicker" Binding="{Binding Source={x:Reference Tue}, Path=IsChecked}" Value="false">
+                                                            <Setter Property="SelectedItem" Value="null"/>
+                                                        </DataTrigger>
+                                                    </custom:BorderlessPicker.Triggers>
+                                                </custom:BorderlessPicker>
+                                            </Frame>
+
+                                            <Label Text=":"/>
+                                            <Frame>
+                                                <custom:BorderlessPicker Title="분" HorizontalTextAlignment="Center"
+                                                                         WidthRequest="60"
+                                                                         ItemsSource="{Binding Minutes}">
+                                                    <custom:BorderlessPicker.Triggers>
+                                                        <DataTrigger TargetType="custom:BorderlessPicker" Binding="{Binding Source={x:Reference Tue}, Path=IsChecked}" Value="false">
+                                                            <Setter Property="SelectedItem" Value="null"/>
+                                                        </DataTrigger>
+                                                    </custom:BorderlessPicker.Triggers>
+                                                </custom:BorderlessPicker>
+                                            </Frame>
+
+                                        </StackLayout>
+                                    </StackLayout>
+
+
+                                    <!--수-->
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                            <CheckBox x:Name="Wed"/>
+                                            <Label Text="수"/>
+                                        </StackLayout>
+                                        <StackLayout IsVisible="{Binding Source={x:Reference Wed}, Path=IsChecked}" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                            <Frame>
+                                                <custom:BorderlessPicker Title="시" HorizontalTextAlignment="Center"
+                                                                          WidthRequest="60"
+                                                                         ItemsSource="{Binding Hours}">
+                                                    <custom:BorderlessPicker.Triggers>
+                                                        <DataTrigger TargetType="custom:BorderlessPicker" Binding="{Binding Source={x:Reference Wed}, Path=IsChecked}" Value="false">
+                                                            <Setter Property="SelectedItem" Value="null"/>
+                                                        </DataTrigger>
+                                                    </custom:BorderlessPicker.Triggers>
+                                                </custom:BorderlessPicker>
+                                            </Frame>
+
+                                            <Label Text=":"/>
+                                            <Frame>
+                                                <custom:BorderlessPicker Title="분" HorizontalTextAlignment="Center"
+                                                                         WidthRequest="60"
+                                                                         ItemsSource="{Binding Minutes}">
+                                                    <custom:BorderlessPicker.Triggers>
+                                                        <DataTrigger TargetType="custom:BorderlessPicker" Binding="{Binding Source={x:Reference Wed}, Path=IsChecked}" Value="false">
+                                                            <Setter Property="SelectedItem" Value="null"/>
+                                                        </DataTrigger>
+                                                    </custom:BorderlessPicker.Triggers>
+                                                </custom:BorderlessPicker>
+                                            </Frame>
+
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                    <!--목-->
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                            <CheckBox x:Name="Thu"/>
+                                            <Label Text="목"/>
+                                        </StackLayout>
+                                        <StackLayout IsVisible="{Binding Source={x:Reference Thu}, Path=IsChecked}" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                            <Frame>
+                                                <custom:BorderlessPicker Title="시" HorizontalTextAlignment="Center"
+                                                                          WidthRequest="60"
+                                                                         ItemsSource="{Binding Hours}">
+                                                    <custom:BorderlessPicker.Triggers>
+                                                        <DataTrigger TargetType="custom:BorderlessPicker" Binding="{Binding Source={x:Reference Thu}, Path=IsChecked}" Value="false">
+                                                            <Setter Property="SelectedItem" Value="null"/>
+                                                        </DataTrigger>
+                                                    </custom:BorderlessPicker.Triggers>
+                                                </custom:BorderlessPicker>
+                                            </Frame>
+
+                                            <Label Text=":"/>
+                                            <Frame>
+                                                <custom:BorderlessPicker Title="분" HorizontalTextAlignment="Center"
+                                                                         WidthRequest="60"
+                                                                         ItemsSource="{Binding Minutes}">
+                                                    <custom:BorderlessPicker.Triggers>
+                                                        <DataTrigger TargetType="custom:BorderlessPicker" Binding="{Binding Source={x:Reference Thu}, Path=IsChecked}" Value="false">
+                                                            <Setter Property="SelectedItem" Value="null"/>
+                                                        </DataTrigger>
+                                                    </custom:BorderlessPicker.Triggers>
+                                                </custom:BorderlessPicker>
+                                            </Frame>
+
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                    <!--금-->
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                            <CheckBox x:Name="Fri"/>
+                                            <Label Text="금"/>
+                                        </StackLayout>
+                                        <StackLayout IsVisible="{Binding Source={x:Reference Fri}, Path=IsChecked}" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                            <Frame>
+                                                <custom:BorderlessPicker Title="시" HorizontalTextAlignment="Center"
+                                                                          WidthRequest="60"
+                                                                         ItemsSource="{Binding Hours}">
+                                                    <custom:BorderlessPicker.Triggers>
+                                                        <DataTrigger TargetType="custom:BorderlessPicker" Binding="{Binding Source={x:Reference Fri}, Path=IsChecked}" Value="false">
+                                                            <Setter Property="SelectedItem" Value="null"/>
+                                                        </DataTrigger>
+                                                    </custom:BorderlessPicker.Triggers>
+                                                </custom:BorderlessPicker>
+                                            </Frame>
+
+                                            <Label Text=":"/>
+                                            <Frame>
+                                                <custom:BorderlessPicker Title="분" HorizontalTextAlignment="Center"
+                                                                         WidthRequest="60"
+                                                                         ItemsSource="{Binding Minutes}">
+                                                    <custom:BorderlessPicker.Triggers>
+                                                        <DataTrigger TargetType="custom:BorderlessPicker" Binding="{Binding Source={x:Reference Fri}, Path=IsChecked}" Value="false">
+                                                            <Setter Property="SelectedItem" Value="null"/>
+                                                        </DataTrigger>
+                                                    </custom:BorderlessPicker.Triggers>
+                                                </custom:BorderlessPicker>
+                                            </Frame>
+
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                    <!--토-->
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                            <CheckBox x:Name="Sat"/>
+                                            <Label Text="토"/>
+                                        </StackLayout>
+                                        <StackLayout IsVisible="{Binding Source={x:Reference Sat}, Path=IsChecked}" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                            <Frame>
+                                                <custom:BorderlessPicker Title="시" HorizontalTextAlignment="Center"
+                                                                          WidthRequest="60"
+                                                                         ItemsSource="{Binding Hours}">
+                                                    <custom:BorderlessPicker.Triggers>
+                                                        <DataTrigger TargetType="custom:BorderlessPicker" Binding="{Binding Source={x:Reference Sat}, Path=IsChecked}" Value="false">
+                                                            <Setter Property="SelectedItem" Value="null"/>
+                                                        </DataTrigger>
+                                                    </custom:BorderlessPicker.Triggers>
+                                                </custom:BorderlessPicker>
+                                            </Frame>
+
+                                            <Label Text=":"/>
+                                            <Frame>
+                                                <custom:BorderlessPicker Title="분" HorizontalTextAlignment="Center"
+                                                                         WidthRequest="60"
+                                                                         ItemsSource="{Binding Minutes}">
+                                                    <custom:BorderlessPicker.Triggers>
+                                                        <DataTrigger TargetType="custom:BorderlessPicker" Binding="{Binding Source={x:Reference Sat}, Path=IsChecked}" Value="false">
+                                                            <Setter Property="SelectedItem" Value="null"/>
+                                                        </DataTrigger>
+                                                    </custom:BorderlessPicker.Triggers>
+                                                </custom:BorderlessPicker>
+                                            </Frame>
+
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                    <!--일-->
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                            <CheckBox x:Name="Sun"/>
+                                            <Label Text="일"/>
+                                        </StackLayout>
+                                        <StackLayout IsVisible="{Binding Source={x:Reference Sun}, Path=IsChecked}" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                            <Frame>
+                                                <custom:BorderlessPicker Title="시" HorizontalTextAlignment="Center"
+                                                                          WidthRequest="60"
+                                                                         ItemsSource="{Binding Hours}">
+                                                    <custom:BorderlessPicker.Triggers>
+                                                        <DataTrigger TargetType="custom:BorderlessPicker" Binding="{Binding Source={x:Reference Sun}, Path=IsChecked}" Value="false">
+                                                            <Setter Property="SelectedItem" Value="null"/>
+                                                        </DataTrigger>
+                                                    </custom:BorderlessPicker.Triggers>
+                                                </custom:BorderlessPicker>
+                                            </Frame>
+
+                                            <Label Text=":"/>
+                                            <Frame>
+                                                <custom:BorderlessPicker Title="분" HorizontalTextAlignment="Center"
+                                                                         WidthRequest="60"
+                                                                         ItemsSource="{Binding Minutes}">
+                                                    <custom:BorderlessPicker.Triggers>
+                                                        <DataTrigger TargetType="custom:BorderlessPicker" Binding="{Binding Source={x:Reference Sun}, Path=IsChecked}" Value="false">
+                                                            <Setter Property="SelectedItem" Value="null"/>
+                                                        </DataTrigger>
+                                                    </custom:BorderlessPicker.Triggers>
+                                                </custom:BorderlessPicker>
+                                            </Frame>
+
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                   
+
+                                </StackLayout>
+                            </ScrollView>
+
+                            <StackLayout>
+
+
+                            </StackLayout>
+
+
+
+                        </StackLayout>
+
+                    </StackLayout>
+                </ScrollView>
+
+                <Button Style="{StaticResource PageEndButton}"
+                        Text="보내기"/>
+            </StackLayout>
+
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

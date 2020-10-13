@@ -13,7 +13,8 @@ namespace PersonalTeaching
 
             InitializeComponent();
             //MainPage = new NavigationPage(new MainPage());
-            MainPage = new NavigationPage(new SelectGradeAndSchoolPage());
+            MainPage = new NavigationPage(new BasicAddressPage());
+            //MainPage = new NavigationPage(new WriteStudentInformationPage());
         }
 
         protected override void OnStart()

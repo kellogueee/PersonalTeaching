@@ -22,13 +22,16 @@
     <Compile Update="View\AddOptionPage.xaml.cs">
       <DependentUpon>AddOptionPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="View\BasicAddressPage.xaml.cs">
+      <DependentUpon>BasicAddressPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="View\AddOptionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\SelectGradeAndSchoolPage.xaml">
+    <EmbeddedResource Update="View\BasicAddressPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\WriteStudentInformationPage.xaml">

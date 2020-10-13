@@ -1,5 +1,6 @@
 ﻿using PersonalTeaching.CodeDictionary;
 using PersonalTeaching.Constant;
+using PersonalTeaching.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,66 +16,37 @@ namespace PersonalTeaching.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddOptionPage : ContentPage
     {
-        int _currentPrice;
-        int _selectedPrice;
+        private int _currentPrice;
+        private int _selectedPrice = 0;
 
         public AddOptionPage(int price)
         {
             InitializeComponent();
+            var vm = new AddOptionPageViewModel();
+            BindingContext = vm.GetAddOptionViewModel(price);
             _selectedPrice = price;
             _currentPrice = price;
-
-            priceLabel.Text = string.Format("{0:0,0}", _selectedPrice) + "원";
-            CompleteButton.Text = string.Format("{0:0,0}", _selectedPrice) + "원";
-
-            int rowCount = AddOptionGrid.RowDefinitions.Count;
-            for(var row = 0; row < rowCount; row++)
-            {
-                var stack = new StackLayout
-                {
-                    Orientation = StackOrientation.Horizontal
-                };
-
-                var tapGestureRecognizer = new TapGestureRecognizer();
-                tapGestureRecognizer.Tapped += OnStackTapped;
-                stack.GestureRecognizers.Add(tapGestureRecognizer);
-                Grid.SetRow(stack, row);
-
-                var checkBox = new CheckBox();
-                checkBox.CheckedChanged += OnCheckboxChecked;
-
-                var optionNameLabel = ResourceDictionaryInCode.ListLabelStyle();
-                optionNameLabel.Text = Constants.OptionStringArray[row];
-                var optionPriceLabel = ResourceDictionaryInCode.ListLabelStyle();
-                optionPriceLabel.Text = Constants.GetOptionPriceStringArray(_selectedPrice).ToArray()[row];
-                optionPriceLabel.FontAttributes = FontAttributes.Bold;
-                optionPriceLabel.HorizontalOptions = LayoutOptions.EndAndExpand;
-
-                stack.Children.Add(checkBox);
-                stack.Children.Add(optionNameLabel);
-                stack.Children.Add(optionPriceLabel);
-
-                AddOptionGrid.Children.Add(stack);
-
-            }
-
-
+            currentPriceLabel.Text = string.Format("{0:0,0}", _currentPrice) + "원";
         }
 
 
         private void OnStackTapped(object sender, EventArgs e)
         {
             var stack = (StackLayout)sender;
-            var child = (CheckBox)(stack.Children.FirstOrDefault());
-            if (child.IsChecked)
+            var check = (CheckBox)stack.Children[0];
+
+            //현재 체크되어있다면
+            if (check.IsChecked)
             {
-                child.IsChecked = false;
+                check.IsChecked = false;
             }
             else
             {
-                child.IsChecked = true;
+                check.IsChecked = true;
             }
         }
+
+
 
 
         private async void OnCompleteButtonClicked(object sender, EventArgs e)
@@ -85,27 +57,20 @@ namespace PersonalTeaching.View
         private void OnCheckboxChecked(object sender, CheckedChangedEventArgs e)
         {
             var checkBox = (CheckBox)sender;
-            var parent = (StackLayout)checkBox.Parent;
+            var stack = (StackLayout)checkBox.Parent;
+            var thisPrice = int.Parse(((Label)stack.Children[2]).Text);
 
-            var label1 = (Label)parent.Children[1];
-
-            var idx = Constants.OptionStringArray.IndexOf(label1.Text);
-
+            //눌러서 지금 체크가 되었다면
             if (checkBox.IsChecked)
             {
-                _currentPrice += Constants.GetOptionPriceArray(_selectedPrice).ToArray()[idx];
-                priceLabel.Text = string.Format("{0:0,0}", _currentPrice)+"원";
-                //CompleteButton.Text = string.Format("{0:0,0}", _currentPrice) + "원 제출하기";
-                CompleteButton.Text ="견적서 완성하기";
+                _currentPrice += thisPrice;
             }
             else
             {
-                _currentPrice -= Constants.GetOptionPriceArray(_selectedPrice).ToArray()[idx];
-                priceLabel.Text = string.Format("{0:0,0}", _currentPrice) + "원";
-                //CompleteButton.Text = string.Format("{0:0,0}", _currentPrice) + "원 제출하기";
-                CompleteButton.Text = "견적서 완성하기";
+                _currentPrice -= thisPrice;
             }
-            
+            currentPriceLabel.Text= string.Format("{0:0,0}", _currentPrice) + "원";
+
         }
 
     }
