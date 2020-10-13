@@ -36,7 +36,7 @@ namespace PersonalTeaching.View
         {
             base.OnAppearing();
 
-            var idx = Constants.PriceForeachGrade.IndexOf(_currentPrice);
+            var idx = Constants.PriceForeachGrade.IndexOf(_infoModel.GradePrice);
 
             //중등
             if (idx < 3)
