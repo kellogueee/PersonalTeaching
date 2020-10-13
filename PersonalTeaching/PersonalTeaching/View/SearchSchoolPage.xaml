@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PersonalTeaching.View.SearchSchoolPage">
+    <ContentPage.Content>
+        <StackLayout Padding="10" Style="{StaticResource MainContentsPage}">
+            <!--여기는 나중에 웹뷰 형태로 웹에서 데이터를 불러오게끔 할예정-->
+            <!--<Entry Placeholder="ex)기장중학교" Text="{Binding Source={x:Reference autoList}, Path=SelectedItem}"/>
+            <CollectionView x:Name="autoList">
+                <CollectionView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Baboon</x:String>
+                        <x:String>Capuchin Monkey</x:String>
+                        <x:String>Blue Monkey</x:String>
+                        <x:String>Squirrel Monkey</x:String>
+                        <x:String>Golden Lion Tamarin</x:String>
+                        <x:String>Howler Monkey</x:String>
+                        <x:String>Japanese Macaque</x:String>
+                    </x:Array>
+                </CollectionView.ItemsSource>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding .}" VerticalOptions="CenterAndExpand"/>
+                            <StackLayout Style="{StaticResource PageSeparationBar}" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>-->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,5 +1,6 @@
 ﻿using PersonalTeaching.CodeDictionary;
 using PersonalTeaching.Constant;
+using PersonalTeaching.Model;
 using PersonalTeaching.View;
 using PersonalTeaching.ViewModel;
 using System;
@@ -11,16 +12,19 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
-namespace PersonalTeaching
+namespace PersonalTeaching.View
 {
-    public partial class MainPage : ContentPage
+    public partial class SelectGradePage : ContentPage
     {
 
         private int _currentPrice = 0;
 
-        public MainPage()
+        WriteStudentInformationPageModel _infoModel;
+
+        public SelectGradePage(WriteStudentInformationPageModel infoModel)
         {
             InitializeComponent();
+            _infoModel = infoModel;
             var vm = new MainPageViewModel();
             BindingContext = vm.GetMainPageBindingContext();
         }
@@ -51,7 +55,11 @@ namespace PersonalTeaching
                 await DisplayAlert("", "학년을 선택해 주세요.", "확인");
                 return;
             }
-            await Navigation.PushAsync(new AddOptionPage(_currentPrice));
+
+            _infoModel.Grade = Constants.GradeString[Constants.PriceForeachGrade.IndexOf(_currentPrice)];
+            _infoModel.GradePrice = _currentPrice;
+
+            await Navigation.PushAsync(new AddOptionPage(_infoModel));
         }
 
     }

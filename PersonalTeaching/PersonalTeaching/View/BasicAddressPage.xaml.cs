@@ -1,4 +1,5 @@
-﻿using PersonalTeaching.ViewModel;
+﻿using PersonalTeaching.Model;
+using PersonalTeaching.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,12 @@ namespace PersonalTeaching.View
     {
 
         BasicAddressPageViewModel vm;
+        WriteStudentInformationPageModel _infoModel;
 
         public BasicAddressPage()
         {
             InitializeComponent();
+            _infoModel = new WriteStudentInformationPageModel();
             vm = new BasicAddressPageViewModel();
             BindingContext = vm;
         }
@@ -52,7 +55,10 @@ namespace PersonalTeaching.View
 
         private async void OnNextButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MainPage());
+            _infoModel.Si = (string)Si_Picker.SelectedItem;
+            _infoModel.Gu = (string)Gu_Picker.SelectedItem;
+            _infoModel.Dong = (string)Dong_Picker.SelectedItem;
+            await Navigation.PushAsync(new SelectGradePage(_infoModel));
         }
     }
 }

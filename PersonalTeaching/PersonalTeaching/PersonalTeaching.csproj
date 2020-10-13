@@ -25,6 +25,9 @@
     <Compile Update="View\BasicAddressPage.xaml.cs">
       <DependentUpon>BasicAddressPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="View\SelectGradePage.xaml.cs">
+      <DependentUpon>SelectGradePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +35,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\BasicAddressPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\SearchSchoolPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\WriteStudentInformationPage.xaml">

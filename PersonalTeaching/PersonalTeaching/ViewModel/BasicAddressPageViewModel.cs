@@ -59,7 +59,7 @@ namespace PersonalTeaching.ViewModel
             guSource.Add("영도구");
             guSource.Add("동래구");
             guSource.Add("부산진구");
-            guSource.Add("해운대진구");
+            guSource.Add("해운대구");
             guSource.Add("사하구");
             guSource.Add("금정구");
             guSource.Add("강서구");

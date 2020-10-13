@@ -15,13 +15,17 @@ namespace PersonalTeaching.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WriteStudentInformationPage : ContentPage
     {
-
-        public WriteStudentInformationPage()
+        WriteStudentInformationPageModel _infoModel;
+        public WriteStudentInformationPage(WriteStudentInformationPageModel infoModel)
         {
             InitializeComponent();
-
-            BindingContext = new WriteStudentInformationPageViewModel();
+            _infoModel = infoModel;
+            BindingContext = new WriteStudentInformationPageViewModel(_infoModel);
         }
         
+        private async void OnSearchSchoolFrameTapped(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new SearchSchoolPage(_infoModel));
+        }
     }
 }

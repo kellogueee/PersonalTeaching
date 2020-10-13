@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PersonalTeaching.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -13,8 +14,12 @@ namespace PersonalTeaching.ViewModel
         public ObservableCollection<string> Hours { get; set; }
         public ObservableCollection<string> Minutes { get; set; }
 
-        public WriteStudentInformationPageViewModel()
+        public WriteStudentInformationPageModel Model { get; set; }
+
+        public WriteStudentInformationPageViewModel(WriteStudentInformationPageModel model)
         {
+            Model = model;
+
             hourSource = new List<string>();
             minuteSource = new List<string>();
             CreateHours();

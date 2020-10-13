@@ -1,5 +1,6 @@
 ﻿using PersonalTeaching.CodeDictionary;
 using PersonalTeaching.Constant;
+using PersonalTeaching.Model;
 using PersonalTeaching.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -18,15 +19,40 @@ namespace PersonalTeaching.View
     {
         private int _currentPrice;
         private int _selectedPrice = 0;
-
-        public AddOptionPage(int price)
+        WriteStudentInformationPageModel _infoModel;
+        public AddOptionPage(WriteStudentInformationPageModel infoModel)
         {
             InitializeComponent();
+            _infoModel = infoModel;
+            _infoModel.Options = new List<string>();
             var vm = new AddOptionPageViewModel();
-            BindingContext = vm.GetAddOptionViewModel(price);
-            _selectedPrice = price;
-            _currentPrice = price;
+            BindingContext = vm.GetAddOptionViewModel(_infoModel.GradePrice);
+            _selectedPrice = _infoModel.GradePrice;
+            _currentPrice = _infoModel.GradePrice;
             currentPriceLabel.Text = string.Format("{0:0,0}", _currentPrice) + "원";
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            var idx = Constants.PriceForeachGrade.IndexOf(_currentPrice);
+
+            //중등
+            if (idx < 3)
+            {
+                MathAndScienceOption.IsVisible = false;
+            }
+
+            //고등
+            else if(idx<4)
+            {
+                SpecialHighschoolOption.IsVisible = false;
+            }
+            else if (idx == 5)
+            {
+                PreEduOption.IsVisible = false;
+            }
         }
 
 
@@ -47,31 +73,34 @@ namespace PersonalTeaching.View
         }
 
 
-
-
-        private async void OnCompleteButtonClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new WriteStudentInformationPage());
-        }
-
         private void OnCheckboxChecked(object sender, CheckedChangedEventArgs e)
         {
             var checkBox = (CheckBox)sender;
             var stack = (StackLayout)checkBox.Parent;
             var thisPrice = int.Parse(((Label)stack.Children[2]).Text);
+            var thisOption = (string)(((Label)stack.Children[1]).Text);
 
             //눌러서 지금 체크가 되었다면
             if (checkBox.IsChecked)
             {
                 _currentPrice += thisPrice;
+                _infoModel.Options.Add(thisOption);
             }
             else
             {
                 _currentPrice -= thisPrice;
+                _infoModel.Options.Remove(thisOption);
             }
             currentPriceLabel.Text= string.Format("{0:0,0}", _currentPrice) + "원";
-
         }
 
+
+
+        private async void OnCompleteButtonClicked(object sender, EventArgs e)
+        {
+            _infoModel.TotalPrice = _currentPrice;
+            _infoModel.TotalPriceString= string.Format("{0:0,0}", _currentPrice) + "원";
+            await Navigation.PushAsync(new WriteStudentInformationPage(_infoModel));
+        }
     }
 }

@@ -4,9 +4,9 @@
              xmlns:custom="clr-namespace:PersonalTeaching"
              x:Class="PersonalTeaching.View.WriteStudentInformationPage">
     <NavigationPage.TitleView>
-        <Label Text="견적서"
+        <Label Text="견적서 마무리"
                FontSize="Title"
-               HorizontalOptions="CenterAndExpand"
+                HorizontalOptions="StartAndExpand"
                HorizontalTextAlignment="Center"/>
     </NavigationPage.TitleView>
     <ContentPage.Resources>
@@ -33,19 +33,24 @@
 
                         <StackLayout Orientation="Horizontal" Style="{StaticResource Inner}">
                             <Label Text="º 지역:"/>
-                            <Label Text="부산광역시 해운대구 기장군"/>
+                            <Label Text="{Binding Model.Si}"/>
+                            <Label Text="{Binding Model.Gu}"/>
+                            <Label Text="{Binding Model.Dong}"/>
                         </StackLayout>
                         
-                        <StackLayout Orientation="Horizontal" Style="{StaticResource Inner}">
+                        <!--<StackLayout Orientation="Horizontal" Style="{StaticResource Inner}">
                             <Label Text="º 학교 :"/>
                             <Frame Padding="7">
-                                <Label Text="기장중학교"/>
+                                <Label Text="{Binding Model.SchoolName}"/>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnSearchSchoolFrameTapped"/>
+                                </Frame.GestureRecognizers>
                             </Frame>
-                        </StackLayout>
+                        </StackLayout>-->
 
                         <StackLayout Orientation="Horizontal" Style="{StaticResource Inner}">
                             <Label Text="º 학년 :"/>
-                            <Label Text="중학교 2학년"/>
+                            <Label Text="{Binding Model.Grade}"/>
                         </StackLayout>
 
                         <StackLayout Style="{StaticResource Inner}">
@@ -79,14 +84,14 @@
                                FontSize="Subtitle"/>
 
                         <StackLayout Style="{StaticResource Inner}">
-                            <Label Text="º 대입 준비 방법"/>
+                            <Label Text="º 대학교 입학 준비방법"/>
                             <StackLayout Orientation="Horizontal" Style="{StaticResource InnerInner}">
                                 <StackLayout Orientation="Horizontal">
-                                    <RadioButton GroupName="PrepareMethod"/>
+                                    <CheckBox/>
                                     <Label Text="내신"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
-                                    <RadioButton GroupName="PrepareMethod"/>
+                                    <CheckBox/>
                                     <Label Text="수능"/>
                                 </StackLayout>
                             </StackLayout>
@@ -375,7 +380,10 @@
 
                     </StackLayout>
                 </ScrollView>
-
+                <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" Margin="0,20">
+                    <Label Text="총 견적 금액: "/>
+                    <Label x:Name="currentPriceLabel" Text="{Binding Model.TotalPriceString}"/>
+                </StackLayout>
                 <Button Style="{StaticResource PageEndButton}"
                         Text="보내기"/>
             </StackLayout>

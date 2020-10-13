@@ -10,6 +10,7 @@ namespace PersonalTeaching.Constant
 
         //특별히 바뀌지 않을 것이기 때문에 미리 다 작성을 하자.
         public static int[] PriceForeachGrade = new int[] { 240000, 280000, 320000, 360000, 400000, 440000 };
+        public static string[] GradeString = new string[] { "중학교 1학년", "중학교 2학년" , "중학교 3학년" , "고등학교 1학년", "고등학교 2학년" , "고등학교 3학년" };
         public static int[] OptionAdditionalPriceArray = new int[] { 80000, 92000, 104000, 116000, 118000, 120000 };
 
         public static int GetAddHourOptionPrice(int selectedPrcie)
