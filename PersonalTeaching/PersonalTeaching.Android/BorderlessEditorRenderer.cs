@@ -14,12 +14,12 @@ using PersonalTeaching.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly:ExportRenderer(typeof(BorderlessEditor), typeof(BorderlessEntryRenderer))]
+[assembly:ExportRenderer(typeof(BorderlessEditor), typeof(BorderlessEditorRenderer))]
 namespace PersonalTeaching.Droid
 {
-    public class BorderlessEntryRenderer:EditorRenderer
+    public class BorderlessEditorRenderer:EditorRenderer
     {
-        public BorderlessEntryRenderer(Context context) : base(context)
+        public BorderlessEditorRenderer(Context context) : base(context)
         {
 
         }

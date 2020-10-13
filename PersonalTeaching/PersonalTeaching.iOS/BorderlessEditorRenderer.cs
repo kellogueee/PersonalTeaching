@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -11,19 +10,17 @@ using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-[assembly: ExportRenderer(typeof(BorderlessPicker),typeof(BorderlessPickerRenderer))]
+[assembly:ExportRenderer(typeof(BorderlessEditor),typeof(BorderlessEditorRenderer))]
 namespace PersonalTeaching.iOS
 {
-    public class BorderlessPickerRenderer:PickerRenderer
+    public class BorderlessEditorRenderer:EditorRenderer
     {
-        protected override void OnElementChanged(ElementChangedEventArgs<Picker> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<Editor> e)
         {
             base.OnElementChanged(e);
             if (Control != null)
             {
-                Control.BorderStyle = UITextBorderStyle.None;
             }
-           
         }
     }
 }
