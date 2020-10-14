@@ -98,7 +98,7 @@
 
                 <StackLayout VerticalOptions="EndAndExpand" Style="{StaticResource PageEndButtonStack}">
                     <StackLayout HeightRequest="1" Style="{StaticResource PageSeparationBar}"/>
-                     <StackLayout Orientation="Horizontal">
+                     <StackLayout Orientation="Horizontal" Style="{StaticResource PriceLabelStack}">
                     <Label Text="총 견적 금액: "/>
                     <Label x:Name="currentPriceLabel" Text="0원"/>
                 </StackLayout>
