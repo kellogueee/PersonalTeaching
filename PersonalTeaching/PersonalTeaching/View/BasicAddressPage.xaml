@@ -98,11 +98,13 @@
                     
                 </ScrollView>
                 <!--프레임스택 종료-->
-
-                <Button Style="{StaticResource PageEndButton}"
+                <StackLayout VerticalOptions="EndAndExpand" Style="{StaticResource PageEndButtonStack}">
+                    <StackLayout HeightRequest="1" Style="{StaticResource PageSeparationBar}"/>
+                    <Button Style="{StaticResource PageEndButton}"
                         Text="계속하기"
                         Clicked="OnNextButtonClicked"/>
-            </StackLayout>
+                </StackLayout>
+             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

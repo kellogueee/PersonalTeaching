@@ -93,102 +93,20 @@
                         </StackLayout>
 
                     </StackLayout>
-                    <!--<Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="{StaticResource RowHeight}"/>
-                            <RowDefinition Height="{StaticResource RowHeight}"/>
-                            <RowDefinition Height="{StaticResource RowHeight}"/>
-                            <RowDefinition Height="{StaticResource RowHeight}"/>
-                            <RowDefinition Height="{StaticResource RowHeight}"/>
-                        </Grid.RowDefinitions>
-
-                        <StackLayout Orientation="Horizontal" Grid.Row="0">
-                            <CheckBox CheckedChanged="OnCheckboxChecked"/>
-                            <Label Text="{Binding AddHourOption}"
-                                   VerticalOptions="CenterAndExpand"
-                                   HorizontalOptions="StartAndExpand"/>
-                            <Label Text="{Binding AddHourOptionPrice}"
-                                   IsVisible="false"/>
-                            <Label Text="{Binding AddHourOptionPriceString}"
-                                   VerticalOptions="CenterAndExpand"
-                                   HorizontalOptions="EndAndExpand"/>
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnStackTapped"/>
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-
-                        <StackLayout Orientation="Horizontal" Grid.Row="1">
-                            <CheckBox CheckedChanged="OnCheckboxChecked"/>
-                            <Label Text="{Binding PreEduOption}"
-                                   VerticalOptions="CenterAndExpand"
-                                   HorizontalOptions="StartAndExpand"/>
-                            <Label Text="{Binding PreEduOptionPrice}"
-                                   IsVisible="false"/>
-                            <Label Text="{Binding PreEduOptionPriceString}"
-                                   VerticalOptions="CenterAndExpand"
-                                   HorizontalOptions="EndAndExpand"/>
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnStackTapped"/>
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-
-                        <StackLayout Orientation="Horizontal" Grid.Row="2">
-                            <CheckBox CheckedChanged="OnCheckboxChecked"/>
-                            <Label Text="{Binding PrepareContestOption}"
-                                   VerticalOptions="CenterAndExpand"
-                                   HorizontalOptions="StartAndExpand"/>
-                            <Label Text="{Binding PrepareContestOptionPrice}"
-                                   IsVisible="false"/>
-                            <Label Text="{Binding PrepareContestOptionPriceString}"
-                                   VerticalOptions="CenterAndExpand"
-                                   HorizontalOptions="EndAndExpand"/>
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnStackTapped"/>
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-
-                        <StackLayout Orientation="Horizontal" Grid.Row="3">
-                            <CheckBox CheckedChanged="OnCheckboxChecked"/>
-                            <Label Text="{Binding PrepareSpecialHighSchoolOption}"
-                                   VerticalOptions="CenterAndExpand"
-                                   HorizontalOptions="StartAndExpand"/>
-                            <Label Text="{Binding PrepareSpecialHighSchoolOptionPrice}"
-                                   IsVisible="false"/>
-                            <Label Text="{Binding PrepareSpecialHighSchoolOptionPriceString}"
-                                   VerticalOptions="CenterAndExpand"
-                                   HorizontalOptions="EndAndExpand"/>
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnStackTapped"/>
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-
-                        <StackLayout Orientation="Horizontal" Grid.Row="4">
-                            <CheckBox CheckedChanged="OnCheckboxChecked"/>
-                            <Label Text="{Binding MathAndSciencePartOption}"
-                                   VerticalOptions="CenterAndExpand"
-                                   HorizontalOptions="StartAndExpand"/>
-                            <Label Text="{Binding MathAndSciencePartOptionPrice}"
-                                   IsVisible="false"/>
-                            <Label Text="{Binding MathAndSciencePartOptionPriceString}"
-                                   VerticalOptions="CenterAndExpand"
-                                   HorizontalOptions="EndAndExpand"/>
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnStackTapped"/>
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-
-                    </Grid>-->
-                    
+                                       
                 </ScrollView>
-                
-                <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
+
+                <StackLayout VerticalOptions="EndAndExpand" Style="{StaticResource PageEndButtonStack}">
+                    <StackLayout HeightRequest="1" Style="{StaticResource PageSeparationBar}"/>
+                     <StackLayout Orientation="Horizontal">
                     <Label Text="총 견적 금액: "/>
                     <Label x:Name="currentPriceLabel" Text="0원"/>
                 </StackLayout>
                 <Button Style="{StaticResource PageEndButton}"
                         Text="견적서 마무리하기"
                         Clicked="OnCompleteButtonClicked"/>
-            </StackLayout>
+                </StackLayout>
+             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

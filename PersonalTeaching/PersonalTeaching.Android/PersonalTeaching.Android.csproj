@@ -16,7 +16,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -89,7 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PersonalTeaching\PersonalTeaching.csproj">
-      <Project>{CD8A273F-5203-4C5A-9CBE-5D419BF46341}</Project>
+      <Project>{D342C1CC-51FA-414F-8424-DA8D869913B8}</Project>
       <Name>PersonalTeaching</Name>
     </ProjectReference>
   </ItemGroup>

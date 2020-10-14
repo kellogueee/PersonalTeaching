@@ -380,12 +380,16 @@
 
                     </StackLayout>
                 </ScrollView>
-                <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" Margin="0,20">
+                 <StackLayout VerticalOptions="EndAndExpand" Style="{StaticResource PageEndButtonStack}" Spacing="0">
+                    <StackLayout HeightRequest="1" Style="{StaticResource PageSeparationBar}"/>
+                     <StackLayout Orientation="Horizontal" Style="{StaticResource PriceLabelStack}">
                     <Label Text="총 견적 금액: "/>
-                    <Label x:Name="currentPriceLabel" Text="{Binding Model.TotalPriceString}"/>
+                    <Label x:Name="currentPriceLabel" Text="{Binding Model.TotalPrice}"/>
                 </StackLayout>
                 <Button Style="{StaticResource PageEndButton}"
-                        Text="보내기"/>
+                        Text="견적서 마무리하기"
+                        />
+                </StackLayout>
             </StackLayout>
 
 
